@@ -187,6 +187,12 @@ export default function SettingsManager() {
                     onChange={v => changeShortcut(`gear${gear}Shortcut` as keyof SettingsState, settings?.[`gear${gear}Shortcut` as keyof SettingsState] as string, v, () => {
                       const gs = (get(`gear${gear}Speed` as keyof SettingsState) as number) || 1;
                       invoke("bridge_set_speed", { factor: gs });
+                      // Keep this in step with the startup registration in
+                      // useShortcut.init(): without it the shortcut still drives
+                      // the bridge, but the speed shown in the UI never moves,
+                      // which reads as "the shortcut did nothing" until a
+                      // restart re-registers it with the other callback.
+                      set("speed", gs);
                     })}
                   />
                 </TableCell>
