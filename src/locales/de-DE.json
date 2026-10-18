@@ -72,7 +72,8 @@
     }
   },
   "shortcut": {
-    "notSet": "Nicht gesetzt"
+    "notSet": "Nicht gesetzt",
+    "keyNotSupported": "Diese Taste kann nicht als Tastenkürzel verwendet werden"
   },
   "settings": {
     "loading": "Einstellungen laden…",

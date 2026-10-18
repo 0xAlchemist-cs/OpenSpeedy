@@ -72,7 +72,8 @@
     }
   },
   "shortcut": {
-    "notSet": "Não definido"
+    "notSet": "Não definido",
+    "keyNotSupported": "Esta tecla não pode ser usada como atalho"
   },
   "settings": {
     "loading": "Carregando configurações…",

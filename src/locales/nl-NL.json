@@ -72,7 +72,8 @@
     }
   },
   "shortcut": {
-    "notSet": "Niet ingesteld"
+    "notSet": "Niet ingesteld",
+    "keyNotSupported": "Deze toets kan niet als sneltoets worden gebruikt"
   },
   "settings": {
     "loading": "Instellingen laden…",

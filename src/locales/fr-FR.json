@@ -72,7 +72,8 @@
     }
   },
   "shortcut": {
-    "notSet": "Non défini"
+    "notSet": "Non défini",
+    "keyNotSupported": "Cette touche ne peut pas servir de raccourci"
   },
   "settings": {
     "loading": "Chargement des paramètres…",

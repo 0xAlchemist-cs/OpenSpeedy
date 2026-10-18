@@ -72,7 +72,8 @@
     }
   },
   "shortcut": {
-    "notSet": "Not set"
+    "notSet": "Not set",
+    "keyNotSupported": "This key cannot be used as a shortcut"
   },
   "settings": {
     "loading": "Loading settings…",

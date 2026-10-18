@@ -39,6 +39,32 @@ interface ShortcutFieldProps {
     conflict?: boolean;
 }
 
+/**
+ * Shortcuts are stored in the form the backend parses (`NUMPAD1`, `NUMPADADD`,
+ * …). KeyComboTag prints anything it does not recognise verbatim, so numpad
+ * keys are turned back into something a keycap would actually say.
+ */
+function displayKey(key: string): string {
+    if (key === "Command") return "meta";
+
+    const numpad = /^NUMPAD(.+)$/.exec(key);
+    if (!numpad) return key;
+
+    // KeyComboTag strips whitespace and splits on "+", so these labels must
+    // contain neither — a literal "Num +" would render as two keycaps.
+    const rest = numpad[1];
+    if (/^\d$/.test(rest)) return `Num${rest}`;
+    switch (rest) {
+        case "ADD": return "NumPlus";
+        case "SUBTRACT": return "Num-";
+        case "MULTIPLY": return "Num*";
+        case "DIVIDE": return "Num/";
+        case "DECIMAL": return "Num.";
+        case "ENTER": return "NumEnter";
+        default: return key;
+    }
+}
+
 export default function ShortcutField({ value, onChange, disable = false, minWidth = '10rem', conflict = false }: ShortcutFieldProps) {
     const { t } = useTranslation();
     const [isRecording, setIsRecording] = useState(false);
@@ -95,6 +121,18 @@ export default function ShortcutField({ value, onChange, disable = false, minWid
             // 处理字母键
             else if (event.code.startsWith('Key')) {
                 mainKey = event.code.replace('Key', '');
+            }
+            // 处理小键盘：必须用 event.code，NumLock 关闭时 event.key 会变成
+            // End/ArrowDown 之类，只有 code 始终指向物理按键
+            else if (event.code.startsWith('Numpad')) {
+                // global-hotkey 把 NumpadEqual 映射成了 VK_E（字母 E 的虚拟键码），
+                // 放行的话会把 E 键注册成快捷键
+                if (event.code === 'NumpadEqual') {
+                    notify(t("shortcut.keyNotSupported"), 'warning');
+                    return;
+                }
+                // Numpad1 → NUMPAD1，与 global-hotkey 的键名一一对应
+                mainKey = event.code.toUpperCase();
             }
             // 处理特殊键
             else if (event.code.startsWith('Arrow')) {
@@ -255,7 +293,7 @@ export default function ShortcutField({ value, onChange, disable = false, minWid
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                             {currentCombo.split('+').map((key, index, array) => (
                                 <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                                    <KeyComboTag combo={key === 'Command' ? 'meta' : key} />
+                                    <KeyComboTag combo={displayKey(key)} />
                                     {index < array.length - 1 && (
                                         <Typography sx={{ fontSize: '0.875rem', color: 'text.secondary' }}>+</Typography>
                                     )}
@@ -278,7 +316,7 @@ export default function ShortcutField({ value, onChange, disable = false, minWid
                         )}
                         {value.split('+').map((key, index, array) => (
                             <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                                <KeyComboTag combo={key === 'Command' ? 'meta' : key} />
+                                <KeyComboTag combo={displayKey(key)} />
                                 {index < array.length - 1 && (
                                     <Typography sx={{ fontSize: '0.875rem', color: 'text.secondary' }}>+</Typography>
                                 )}
