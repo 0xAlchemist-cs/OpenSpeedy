@@ -1,8 +1,8 @@
 {
   "tray": {
     "show": "顯示視窗",
-    "quit": "結束",
-    "logs": "開啟日誌目錄"
+    "quit": "退出",
+    "logs": "開啟記錄檔資料夾"
   },
   "app": {
     "title": "OpenSpeedy",
@@ -46,7 +46,7 @@
     "disableFail": "停用加速失敗",
     "showSystem": "顯示系統處理程序",
     "detail": {
-      "title": "程式詳情",
+      "title": "程式詳細資訊",
       "pid": "程式 ID",
       "name": "程式名稱",
       "arch": "架構",
@@ -60,7 +60,7 @@
       "statusEnabled": "加速已啟用",
       "statusDisabled": "加速已停用",
       "statusNotInjected": "未注入",
-      "noSelection": "請在左側列表中選擇一個程式以檢視詳情",
+      "noSelection": "請在左側清單中選擇一個程式以檢視詳細資訊",
       "yes": "是",
       "no": "否",
       "modules": "已載入模組",
@@ -78,7 +78,7 @@
     "step": "調整幅度",
     "increase": "微調加速",
     "decrease": "微調減速",
-    "reset": "恢復正常速度",
+    "reset": "還原正常速度",
     "confirm": "確認",
     "cancel": "取消",
     "gears": "變速檔位",
@@ -86,9 +86,9 @@
     "gear": "檔位",
     "multiplier": "變速倍率",
     "general": "一般設定",
-    "autoStart": "開機自動啟動",
+    "autoStart": "登入電腦時啟動",
     "alwaysOnTop": "視窗最上層",
-    "hideToTray": "隱藏系統匣",
+    "hideToTray": "關閉至系統匣",
     "language": "語言",
     "registerSuccess": "快速鍵 \"{{shortcut}}\" 註冊成功",
     "registerFail": "快速鍵 \"{{shortcut}}\" 註冊失敗"
@@ -100,17 +100,17 @@
   "about": {
     "title": "OpenSpeedy",
     "description": "開源遊戲變速控制器",
-    "author": "作者",
-    "license": "授權",
-    "version": "版本",
-    "system": "系統",
-    "socialLinks": "社交連結",
+    "author": "程式製作者",
+    "license": "軟體授權",
+    "version": "程式版本",
+    "system": "作業系統",
+    "socialLinks": "社群連結",
     "socialGithub": "GitHub 首頁",
     "socialSteam": "Steam 商店頁面",
     "socialBmc": "請作者喝杯咖啡",
-    "copyInfoSuccess": "已複製軟體資訊，準備貼上到問題報告。",
+    "copyInfoSuccess": "已拷貝軟體資訊，請至下方 Github 貼上到問題回報(issue)。",
     "copyInfoError": "複製軟體資訊失敗，請手動複製。",
     "copyInfo": "軟體資訊",
-    "openLog": "開啟日誌"
+    "openLog": "開啟紀錄檔"
   }
 }
