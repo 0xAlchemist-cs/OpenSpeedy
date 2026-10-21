@@ -96,7 +96,8 @@
 
 ``` powershell
 # Install command
-winget install openspeedy
+# Specify the exact package ID and source to avoid Microsoft Store name conflicts.
+winget install --id Game1024.OpenSpeedy --exact --source winget
 
 # Open a new terminal and run openspeedy
 openspeedy

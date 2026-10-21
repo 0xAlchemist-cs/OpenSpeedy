@@ -96,7 +96,8 @@
 
 ``` powershell
 # 安装命令如下
-winget install openspeedy
+# 指定准确的软件包 ID 和来源，避免与 Microsoft Store 中的同名软件冲突
+winget install --id Game1024.OpenSpeedy --exact --source winget
 
 # 打开一个新的终端，运行openspeedy
 openspeedy
